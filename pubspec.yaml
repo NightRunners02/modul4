@@ -1,0 +1,32 @@
+name: tes
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  flutter_local_notifications: ^18.0.1
+  cloud_firestore: ^4.15.8
+  firebase_messaging: ^14.7.19
+  firebase_auth: ^4.17.8
+  open_app_settings: ^2.0.1
+  #get storage package
+  get_storage: ^2.1.1
+#image picker package
+  image_picker: ^1.0.8
+# video player package
+  video_player: ^2.9.1
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+
