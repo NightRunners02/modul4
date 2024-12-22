@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tes/auth_controller.dart'; // Import your new page
+import 'package:tes/app/modules/page/register/controllers/register_controller.dart';
 
 class RegisterPage extends StatelessWidget {
-  final AuthController authController = Get.put(AuthController());
+  final RegisterController registerController = Get.put(RegisterController());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -15,28 +15,71 @@ class RegisterPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
+            // Input Field for Email
             TextField(
               controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              ),
             ),
+            SizedBox(height: 10),
+
+            // Input Field for Password
             TextField(
               controller: passwordController,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              ),
               obscureText: true,
             ),
-            Obx(() => authController.isLoading.value
+            SizedBox(height: 20),
+
+            // Register Button
+            Obx(() => registerController.isLoading.value
                 ? CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: () {
-                      authController.registerUser(
-                          emailController.text.trim(), passwordController.text.trim());
+                      String email = emailController.text.trim();
+                      String password = passwordController.text.trim();
+
+                      // Validate Email and Password
+                      if (email.isEmpty || password.isEmpty) {
+                        Get.snackbar("Error", "Email and password cannot be empty.");
+                        return;
+                      }
+
+                      if (!GetUtils.isEmail(email)) {
+                        Get.snackbar("Error", "Please enter a valid email address.");
+                        return;
+                      }
+
+                      if (password.length < 6) {
+                        Get.snackbar("Error", "Password must be at least 6 characters long.");
+                        return;
+                      }
+
+                      // Save data locally using RegisterController
+                      registerController.saveRegisterLocally(email, password);
+
+                      // Provide feedback to the user
+                      Get.snackbar("Success", "Data saved locally.");
+
+                      // Clear input fields after saving
+                      emailController.clear();
+                      passwordController.clear();
                     },
                     child: Text('Register'),
                   )),
             SizedBox(height: 20),
+
+            // Navigate to Login Page
             TextButton(
               onPressed: () {
-                Get.toNamed('/login'); // Navigate to LoginPage when pressed
+                Get.toNamed('/login');
               },
               child: Text('Already have an account? Login'),
             ),

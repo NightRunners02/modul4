@@ -5,7 +5,8 @@ import 'package:open_app_settings/open_app_settings.dart';
 
 class HomeController extends GetxController {
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin _localNotifications = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _localNotifications =
+      FlutterLocalNotificationsPlugin();
 
   @override
   void onInit() {
@@ -19,7 +20,8 @@ class HomeController extends GetxController {
     const AndroidInitializationSettings androidInitSettings =
         AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const InitializationSettings initSettings = InitializationSettings(android: androidInitSettings);
+    const InitializationSettings initSettings =
+        InitializationSettings(android: androidInitSettings);
 
     _localNotifications.initialize(initSettings);
   }
@@ -37,15 +39,15 @@ class HomeController extends GetxController {
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
       print("User granted notification permission");
-    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+    } else if (settings.authorizationStatus ==
+        AuthorizationStatus.provisional) {
       print("User granted provisional notification permission");
     } else {
       print("User declined or has not accepted notification permission");
 
       Get.defaultDialog(
         title: "Notification Permission Needed",
-        middleText:
-            "Please enable notifications in the app settings.",
+        middleText: "Please enable notifications in the app settings.",
         onConfirm: () {
           OpenAppSettings.openAppSettings();
           Get.back();
@@ -67,7 +69,8 @@ class HomeController extends GetxController {
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("Notification clicked in background: ${message.notification?.title}");
+      print(
+          "Notification clicked in background: ${message.notification?.title}");
     });
   }
 
@@ -83,7 +86,8 @@ class HomeController extends GetxController {
       ),
     ];
 
-    final AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+    final AndroidNotificationDetails androidDetails =
+        AndroidNotificationDetails(
       'channel_id',
       'channel_name',
       channelDescription: 'Channel description',
@@ -99,10 +103,12 @@ class HomeController extends GetxController {
       ),
       showWhen: true,
       autoCancel: true,
-      timeoutAfter: 10000, // Set the duration to 10 seconds (10,000 milliseconds)
+      timeoutAfter:
+          10000, // Set the duration to 10 seconds (10,000 milliseconds)
     );
 
-    final NotificationDetails platformDetails = NotificationDetails(android: androidDetails);
+    final NotificationDetails platformDetails =
+        NotificationDetails(android: androidDetails);
 
     await _localNotifications.show(
       message.hashCode,

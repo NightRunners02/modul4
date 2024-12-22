@@ -52,7 +52,8 @@ class TodoController extends GetxController {
 
     int index = todos.indexWhere((element) => element.id == id);
     if (index != -1) {
-      todos[index] = todos[index].copyWith(task: newTask, isDone: isDone, updatedOn: now);
+      todos[index] =
+          todos[index].copyWith(task: newTask, isDone: isDone, updatedOn: now);
       todos.refresh(); // Perbarui tampilan
     }
   }

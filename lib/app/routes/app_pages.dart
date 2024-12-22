@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
-
+import '../modules/coffe_mocha/bindings/coffe_mocha_binding.dart';
+import '../modules/coffe_mocha/views/coffe_mocha_view.dart';
 
 import 'package:tes/app/modules/page/get_started/bindings/landing_binding.dart'; // Import your new page
 import 'package:tes/app/modules/page/get_started/views/landing_view.dart'; // Import your new page
@@ -12,13 +13,6 @@ import 'package:tes/app/modules/page/home/views/home_view.dart'; // Import your 
 import 'package:tes/app/modules/page/profile/bindings/profile_binding.dart'; // Import your new page
 import 'package:tes/app/modules/page/profile/views/profile_view.dart'; // Import your new page
 import 'package:tes/app/modules/page/login/views/login_view.dart'; // Import your new page
-
-
-
-
-
-
-
 
 part 'app_routes.dart';
 
@@ -52,6 +46,11 @@ class AppPages {
       name: Routes.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.COFFE_MOCHA,
+      page: () => const CoffeMochaView(),
+      binding: CoffeMochaBinding(),
     ),
   ];
 }
