@@ -62,7 +62,7 @@ class LoginPage extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.brown, // Button color
+                      primary: Color.fromARGB(255, 0, 204, 255), // Button color
                       padding: EdgeInsets.symmetric(vertical: 16),
                       textStyle: TextStyle(fontSize: 16),
                     ),
@@ -92,7 +92,8 @@ class LoginPage extends StatelessWidget {
                   const Text("Belum punya akun? "),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(Routes.REGISTER); // Navigasi ke halaman registrasi
+                      Get.toNamed(
+                          Routes.REGISTER); // Navigasi ke halaman registrasi
                     },
                     child: const Text(
                       "Daftar",

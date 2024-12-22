@@ -7,4 +7,3 @@ class LoginBinding extends Bindings {
     Get.lazyPut<LoginController>(() => LoginController());
   }
 }
-

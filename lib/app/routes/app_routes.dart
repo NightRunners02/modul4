@@ -7,7 +7,7 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const HOME = _Paths.HOME;
   static const PROFILE = _Paths.PROFILE; // Tambahkan rute untuk profile
-
+  static const COFFE_MOCHA = _Paths.COFFE_MOCHA;
 }
 
 abstract class _Paths {
@@ -17,5 +17,5 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const HOME = '/home';
   static const PROFILE = '/profile'; // Path untuk profile
-
+  static const COFFE_MOCHA = '/coffe-mocha';
 }

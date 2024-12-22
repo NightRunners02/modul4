@@ -21,6 +21,12 @@ dependencies:
   image_picker: ^1.0.8
 # video player package
   video_player: ^2.9.1
+  geolocator: ^11.1.0
+  geocoding: ^3.0.0
+  permission_handler: ^9.2.0
+  google_maps_flutter: ^2.5.3
+  url_launcher: ^6.1.5
+  connectivity_plus: ^6.0.3
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
@@ -29,4 +35,8 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  assets: 
+    - assets/caramel.jpeg
+    - assets/esspresso.jpeg
+    - assets/coffe_6.png
+    - assets/images/caramel.png
